@@ -1,24 +1,18 @@
-import {
-  Dimensions,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  ViewBase,
-} from "react-native";
+import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Icon from "react-native-vector-icons/Ionicons";
+import { ScreenType } from "../Constants/Constants";
 
-const HomeScreen = () => {
+const HomeScreen = ({ onExit }) => {
   return (
     <View style={styles.container}>
-      <Pressable>
+      <Pressable onPress={() => onExit(ScreenType.addNote)}>
         <View style={styles.itemButton}>
           <Text style={styles.title}>ADD NEW NOTE</Text>
           <Icon style={styles.icon} name="arrow-forward-outline" />
         </View>
       </Pressable>
-      <Pressable>
+      <Pressable onPress={() => onExit(ScreenType.allNotes)}>
         <View style={styles.itemButton}>
           <Text style={styles.title}>VIEW ALL NOTES</Text>
           <Icon style={styles.icon} name="arrow-forward-outline" />
@@ -33,7 +27,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
     alignItems: "center",
     marginTop: 40,
   },
@@ -41,7 +35,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width - 100,
     height: "50%",
     marginVertical: 30,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "purple",
     justifyContent: "center",
     alignItems: "center",
     elevation: 20,
