@@ -1,11 +1,16 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { ScreenType } from "../Constants/Constants";
 
-const BackButton = () => {
+const BackButton = ({ onButtonClick }) => {
   return (
     <View style={styles.container}>
       <View style={styles.button}>
-        <Button title="Back" />
+        <Button
+          onPress={() => onButtonClick(ScreenType.home)}
+          color={"green"}
+          title="< Back"
+        />
       </View>
     </View>
   );
@@ -14,6 +19,12 @@ const BackButton = () => {
 export default BackButton;
 
 const styles = StyleSheet.create({
-  container: "",
-  button: "",
+  container: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+  },
+  button: {
+    margin: 10,
+  },
 });
